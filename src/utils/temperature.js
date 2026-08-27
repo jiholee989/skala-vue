@@ -1,7 +1,6 @@
 // 섭씨 값을 현재 선택한 단위로 바꾸고 화면 표시용 정수로 반환합니다.
 export function toDisplayTemperature(celsius, unit) {
-  const temperature =
-    unit === 'fahrenheit' ? (Number(celsius) * 9) / 5 + 32 : Number(celsius)
+  const temperature = unit === 'fahrenheit' ? (Number(celsius) * 9) / 5 + 32 : Number(celsius)
 
   return Math.round(temperature)
 }

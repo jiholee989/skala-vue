@@ -14,9 +14,10 @@ provide('appTitle', 'Vue Weather Dashboard')
 
       <nav class="main-nav">
         <RouterLink class="nav-link" to="/">🌤️ 날씨 대시보드</RouterLink>
+        <RouterLink class="nav-link" to="/map">🗺️ 전국 날씨</RouterLink>
         <RouterLink class="nav-link" to="/about">ℹ️ 서비스 소개</RouterLink>
 
-        <UnitToggler v-if="['WeatherHome', 'WeatherDetail'].includes(route.name)" />
+        <UnitToggler v-if="['WeatherHome', 'WeatherMap', 'WeatherDetail'].includes(route.name)" />
       </nav>
     </header>
 
@@ -31,6 +32,8 @@ provide('appTitle', 'Vue Weather Dashboard')
 
 .main-nav {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
   border: 1px solid var(--color-border);
