@@ -12,9 +12,9 @@
 .dashboard-card {
   margin-bottom: 16px;
   padding: 20px 32px;
-  border: 1px solid #dcdfe6;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #ffffff;
+  background: var(--color-surface);
 }
 
 .dashboard-card__title {

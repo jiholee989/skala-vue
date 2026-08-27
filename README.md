@@ -22,6 +22,18 @@ Vue 3와 OpenWeather API를 활용한 지역별 날씨 대시보드입니다. �
 - OpenWeather Current Weather API
 - OpenWeather Air Pollution API
 
+## UI 라이브러리 적용
+
+Vue 3용 UI 라이브러리인 Element Plus를 전역 등록하여 입력, 버튼, 상태 표시 UI에 적용했습니다.
+
+- `el-input`: 도시 검색, 체감온도·습도 입력
+- `el-switch`: 섭씨·화씨 단위 전환
+- `el-button`: 검색, 초기화, 상세보기, 메인 화면 이동
+- `el-tag`: 더움·선선함 상태 표시
+- `el-skeleton`: 날씨 데이터 로딩 상태
+- `el-alert`: API 오류 메시지
+- `el-empty`: 검색 결과 없음 안내
+
 ## 데이터 출처
 
 - 현재 기온, 체감온도, 날씨, 습도, 풍속: [OpenWeather Current Weather Data](https://openweathermap.org/current)

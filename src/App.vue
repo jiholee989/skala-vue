@@ -33,27 +33,27 @@ provide('appTitle', 'Vue Weather Dashboard')
   display: flex;
   gap: 10px;
   padding: 10px;
-  border: 1px solid #d4dee6;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #ffffff;
+  background: var(--color-surface);
 }
 
 .nav-link {
   /* flex: 1; */
   padding: 10px 14px;
   border-radius: 8px;
-  color: #315f7d;
+  color: #3f86b1;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
 }
 
 .nav-link:hover {
-  background: #edf5fa;
+  background: var(--color-primary-light);
 }
 
 .nav-link.router-link-exact-active {
-  background: #315f7d;
+  background: var(--color-primary);
   color: #ffffff;
 }
 </style>

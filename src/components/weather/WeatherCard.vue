@@ -13,9 +13,7 @@ const props = defineProps({
 const emit = defineEmits(['select-card', 'click-detail'])
 
 const configStore = useConfigStore()
-const displayTemp = computed(() =>
-  toDisplayTemperature(props.cityItem.temp, configStore.unit),
-)
+const displayTemp = computed(() => toDisplayTemperature(props.cityItem.temp, configStore.unit))
 const displayFeelsLike = computed(() =>
   toDisplayTemperature(props.cityItem.feelsLike, configStore.unit),
 )
@@ -37,19 +35,24 @@ const displayFeelsLike = computed(() =>
       <div class="weather-card__content">
         <h3>{{ props.cityItem.name }} ({{ props.cityItem.status }})</h3>
         <p>
-          현재 기온: {{ displayTemp }}{{ configStore.unitSymbol }} | 체감 온도:
-          {{ displayFeelsLike }}{{ configStore.unitSymbol }} | 습도: {{ props.cityItem.humidity }}%
+          현재 기온: {{ displayTemp }}{{ configStore.unitSymbol }} | 체감 온도: {{ displayFeelsLike
+          }}{{ configStore.unitSymbol }} | 습도: {{ props.cityItem.humidity }}%
         </p>
 
-        <span v-if="props.cityItem.temp >= 25" class="temperature-label hot">
-          ☀️ 더움(25도 이상)
-        </span>
-        <!--조건부 렌더링 (v-if)-->
-        <span v-else class="temperature-label cool">🍃 선선함(25도 미만)</span>
+        <el-tag v-if="props.cityItem.temp >= 29" type="warning" effect="light"> ☀️ 더움 </el-tag>
+
+        <el-tag v-else type="success" effect="light"> 🍃 선선함 </el-tag>
       </div>
     </div>
 
-    <button @click.stop="emit('click-detail', props.cityItem.id)">상세보기</button>
+    <el-button
+      class="detail-button"
+      type="primary"
+      size="small"
+      @click.stop="emit('click-detail', props.cityItem.id)"
+    >
+      상세보기
+    </el-button>
     <!--.stop으로 버블링 방지-->
   </article>
 </template>
@@ -59,9 +62,9 @@ const displayFeelsLike = computed(() =>
   position: relative;
   margin: 12px 0;
   padding: 16px 120px 16px 16px;
-  border: 1px solid #d9e1e7;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--color-surface);
   cursor: pointer;
   transition:
     border-color 0.2s,
@@ -69,13 +72,13 @@ const displayFeelsLike = computed(() =>
 }
 
 .weather-card:hover {
-  border-color: #8fb9d2;
-  background: #f8fbfd;
+  border-color: #8fc5df;
+  background: var(--color-primary-light);
 }
 
 .weather-card h3 {
   margin: 0;
-  color: #294e66;
+  color: #397895;
 }
 
 .weather-card__body {
@@ -99,48 +102,11 @@ const displayFeelsLike = computed(() =>
   margin: 7px 0;
 }
 
-.weather-card button {
+.detail-button {
   position: absolute;
   top: 50%;
   right: 16px;
-  padding: 8px 12px;
-  border: 1px solid #88b9d7;
-  border-radius: 7px;
-  background: #f1f7fa;
-  color: #315f7d;
-  cursor: pointer;
   transform: translateY(-50%);
-  transition:
-    background 0.2s,
-    border-color 0.2s;
-}
-
-.weather-card button:hover {
-  border-color: #5d9fc8;
-  background: #e3f0f7;
-}
-
-.temperature-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 24px;
-  padding: 3px 7px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: normal;
-  line-height: 1;
-  text-align: center;
-}
-
-.temperature-label.hot {
-  background: rgba(239, 68, 68, 0.8);
-  color: white;
-}
-
-.temperature-label.cool {
-  background: rgba(135, 206, 235, 0.8);
-  color: #16324f;
 }
 
 @media (max-width: 560px) {
@@ -148,7 +114,7 @@ const displayFeelsLike = computed(() =>
     padding-right: 16px;
   }
 
-  .weather-card button {
+  .detail-button {
     position: static;
     display: block;
     margin: 14px 0 0 auto;

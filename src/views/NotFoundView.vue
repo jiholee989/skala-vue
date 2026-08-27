@@ -16,9 +16,9 @@ const router = useRouter()
 <style scoped>
 .not-found {
   padding: 40px 20px;
-  border: 1px solid #dcdfe6;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #ffffff;
+  background: var(--color-surface);
   text-align: center;
 }
 

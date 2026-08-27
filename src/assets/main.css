@@ -1,3 +1,25 @@
+:root {
+  --color-primary: #4f9fcf;
+  --color-primary-light: #e9f5fb;
+  --color-secondary: #65b8a6;
+  --color-accent: #f2b866;
+  --color-background: #f4f8fa;
+  --color-surface: #ffffff;
+  --color-border: #d9e6ec;
+  --color-text: #324b5a;
+  --color-muted: #718791;
+
+  --el-color-primary: var(--color-primary);
+  --el-color-primary-light-3: #7db9dc;
+  --el-color-primary-light-5: #a7cfe7;
+  --el-color-primary-light-7: #cde4f1;
+  --el-color-primary-light-8: #dcecf5;
+  --el-color-primary-light-9: #edf6fa;
+  --el-color-primary-dark-2: #3f86b1;
+  --el-color-info: var(--color-secondary);
+  --el-border-radius-base: 8px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,8 +27,8 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #eef3f7;
-  color: #26323b;
+  background: var(--color-background);
+  color: var(--color-text);
   font-family: Arial, 'Noto Sans KR', sans-serif;
 }
 
@@ -17,7 +39,7 @@ body {
 
 .app-header > h1 {
   margin-bottom: 24px;
-  color: #1f4f6f;
+  color: #317aa5;
   font-size: clamp(1.7rem, 4vw, 2.3rem);
   letter-spacing: -0.02em;
 }

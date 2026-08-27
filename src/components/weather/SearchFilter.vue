@@ -10,12 +10,7 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits([
-  'update-feels-like',
-  'update-humidity',
-  'apply-filter',
-  'reset-filter',
-])
+const emit = defineEmits(['update-feels-like', 'update-humidity', 'apply-filter', 'reset-filter'])
 </script>
 
 <template>
@@ -23,28 +18,30 @@ const emit = defineEmits([
     <div class="filter-fields">
       <div class="filter-field">
         <p>🌡️ 체감온도 기준 이상만 보기</p>
-        <input
+        <el-input
           type="number"
-          :value="props.minFeelsLike"
+          :model-value="props.minFeelsLike"
           placeholder="체감 온도 입력"
-          @input="emit('update-feels-like', $event.target.value)"
+          clearable
+          @update:model-value="emit('update-feels-like', $event)"
         />
       </div>
 
       <div class="filter-field">
         <p>🐠 습도 기준 이상만 보기</p>
-        <input
+        <el-input
           type="number"
-          :value="props.minHumidity"
+          :model-value="props.minHumidity"
           placeholder="기준 습도 입력"
-          @input="emit('update-humidity', $event.target.value)"
+          clearable
+          @update:model-value="emit('update-humidity', $event)"
         />
       </div>
 
-      <button class="reset-button" type="button" @click="emit('reset-filter')">초기화</button>
+      <el-button class="reset-button" @click="emit('reset-filter')"> 초기화 </el-button>
     </div>
 
-    <button class="search-button" type="button" @click="emit('apply-filter')">검색</button>
+    <el-button class="search-button" type="primary" @click="emit('apply-filter')"> 검색 </el-button>
   </div>
 </template>
 
@@ -63,61 +60,13 @@ const emit = defineEmits([
   margin: 0 0 8px;
 }
 
-.weather-filter input {
-  width: 100%;
-  padding: 11px 13px;
-  border: 1px solid #c9dce9;
-  border-radius: 8px;
-  outline: none;
-}
-
-.weather-filter button {
-  padding: 11px 16px;
-  border-radius: 8px;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    border-color 0.2s,
-    box-shadow 0.2s,
-    transform 0.1s;
-}
-
 .search-button {
   width: 100%;
   margin-top: 14px;
-  border: 1px solid #315f7d;
-  background: #315f7d;
-  color: #ffffff;
-}
-
-.search-button:hover {
-  border-color: #284f69;
-  background: #284f69;
 }
 
 .reset-button {
   align-self: flex-end;
-  flex: 0 0 auto;
-  padding: 10px 12px;
-  border: 1px solid #c9d6de;
-  background: #f7f9fa;
-  color: #526875;
-}
-
-.reset-button:hover {
-  border-color: #aebfc9;
-  background: #edf2f5;
-}
-
-.weather-filter button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(104, 169, 210, 0.3);
-}
-
-.weather-filter button:active {
-  transform: translateY(1px);
 }
 
 @media (max-width: 560px) {

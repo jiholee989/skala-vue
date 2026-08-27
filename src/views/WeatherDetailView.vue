@@ -96,19 +96,18 @@ const displayAppliedFeelsLike = computed(() => {
       </aside>
     </div>
 
-    <button class="back-button" type="button" @click="router.push('/')">
-      <span aria-hidden="true">←</span>
-      메인 대시보드로 돌아가기
-    </button>
+    <el-button class="back-button" type="info" plain @click="router.push('/')">
+      ← 메인 대시보드로 돌아가기
+    </el-button>
   </section>
 </template>
 
 <style scoped>
 .weather-detail {
   padding: 20px;
-  border: 1px solid #dcdfe6;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #ffffff;
+  background: var(--color-surface);
 }
 
 .weather-detail > h2 {
@@ -118,10 +117,10 @@ const displayAppliedFeelsLike = computed(() => {
 .view-message {
   margin: 20px 12px;
   padding: 16px;
-  border: 1px solid #dfe7ec;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: #f8fbfd;
-  color: #526875;
+  background: var(--color-primary-light);
+  color: var(--color-muted);
 }
 
 .error-message {
@@ -141,14 +140,14 @@ const displayAppliedFeelsLike = computed(() => {
   min-height: 190px;
   margin-left: 12px;
   padding: 18px 22px;
-  border: 1px solid #dfe7ec;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #f8fbfd;
+  background: var(--color-primary-light);
 }
 
 .city-detail h3 {
   margin: 0 0 12px;
-  color: #284f69;
+  color: #397895;
   font-size: 1.1rem;
 }
 
@@ -159,27 +158,27 @@ const displayAppliedFeelsLike = computed(() => {
 .air-quality {
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid #dfe7ec;
+  border-top: 1px solid #c6e6dc;
 }
 
 .air-quality h4 {
   margin: 0 0 8px;
-  color: #3f6658;
+  color: #3f7d70;
   font-size: 0.95rem;
 }
 
 .filter-summary {
   padding: 12px 14px;
-  border: 1px solid #e1e6ea;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: #fafbfc;
-  color: #66747c;
+  background: #f7fbfa;
+  color: var(--color-muted);
   font-size: 0.82rem;
 }
 
 .filter-summary h3 {
   margin: 0 0 8px;
-  color: #465861;
+  color: #456673;
   font-size: 0.9rem;
 }
 
@@ -188,38 +187,8 @@ const displayAppliedFeelsLike = computed(() => {
 }
 
 .back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
   margin-top: 16px;
   margin-left: 12px;
-  padding: 10px 15px;
-  border: 1px solid #88b9d7;
-  border-radius: 8px;
-  background: #f1f7fa;
-  color: #315f7d;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    border-color 0.2s,
-    box-shadow 0.2s,
-    transform 0.1s;
-}
-
-.back-button:hover {
-  border-color: #5d9fc8;
-  background: #e3f0f7;
-}
-
-.back-button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(104, 169, 210, 0.25);
-}
-
-.back-button:active {
-  transform: translateY(1px);
 }
 
 @media (max-width: 640px) {

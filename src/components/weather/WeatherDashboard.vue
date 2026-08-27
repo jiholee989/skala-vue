@@ -140,13 +140,19 @@ function goDetail(cityId) {
         <h2>🏞️ 지역별 날씨 현황 🌤️</h2>
       </template>
 
-      <!-- API 요청 중 -->
-      <p v-if="isLoading">날씨 정보를 불러오는 중입니다...</p>
-      <!-- API 요청 실패 -->
-      <p v-else-if="errorMessage">{{ errorMessage }}</p>
+      <!-- API 요청 중/실패 -->
+      <el-skeleton v-if="isLoading" :rows="4" animated />
+
+      <el-alert
+        v-else-if="errorMessage"
+        :title="errorMessage"
+        type="error"
+        show-icon
+        :closable="false"
+      />
 
       <template v-else>
-        <p v-if="finalWeatherList.length === 0">검색 결과가 없습니다.</p>
+        <el-empty v-if="finalWeatherList.length === 0" description="검색 결과가 없습니다." />
 
         <!-- 도시별 WeatherCard 생성 -->
         <WeatherCard
@@ -173,25 +179,25 @@ function goDetail(cityId) {
 <style scoped>
 .dashboard-wrapper h2 {
   margin-top: 0;
-  color: #284f69;
+  color: #397895;
   font-size: 1.15rem;
 }
 
 .search-divider {
   height: 1px;
   margin: 24px 0;
-  background: #dfe7ec;
+  background: var(--color-border);
 }
 
 .data-source {
   margin: 16px 0 0;
-  color: #7a8992;
+  color: var(--color-muted);
   font-size: 0.78rem;
   text-align: right;
 }
 
 .data-source a {
-  color: #5d7d91;
+  color: #4d849d;
   text-decoration: none;
 }
 
@@ -201,10 +207,10 @@ function goDetail(cityId) {
 
 .status-bar {
   padding: 12px;
-  border: 1px solid #bcd9cd;
+  border: 1px solid #c6e6dc;
   border-radius: 8px;
-  background: #edf7f3;
-  color: #356b58;
+  background: #edf8f4;
+  color: #3f7d70;
   text-align: center;
 }
 </style>

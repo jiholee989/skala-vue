@@ -2,17 +2,22 @@
 import { useConfigStore } from '@/stores/configStore'
 
 const configStore = useConfigStore()
+
+function handleUnitChange() {
+  configStore.toggleUnit()
+}
 </script>
 
 <template>
   <div class="unit-toggler">
-    <span>
-      날씨 단위:
-      {{ configStore.unit === 'celsius' ? '섭씨' : '화씨' }}
-      ({{ configStore.unitSymbol }})
-    </span>
+    <span>온도 단위</span>
 
-    <button type="button" @click="configStore.toggleUnit">단위 변경</button>
+    <el-switch
+      :model-value="configStore.unit === 'fahrenheit'"
+      active-text="℉"
+      inactive-text="℃"
+      @change="handleUnitChange"
+    />
   </div>
 </template>
 
@@ -23,14 +28,5 @@ const configStore = useConfigStore()
   gap: 10px;
   margin-left: auto;
   white-space: nowrap;
-}
-
-.unit-toggler button {
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 6px;
-  background: #315f7d;
-  color: white;
-  cursor: pointer;
 }
 </style>

@@ -35,22 +35,22 @@ const appTitle = inject('appTitle', 'Weather Dashboard')
 <style scoped>
 .about-view {
   padding: 28px 36px;
-  border: 1px solid #dcdfe6;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #ffffff;
+  background: var(--color-surface);
 }
 
 .service-guide {
   margin: 22px 0;
   padding: 18px;
-  border: 1px solid #e1e6ea;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #fafbfc;
+  background: var(--color-primary-light);
 }
 
 .service-guide h3 {
   margin: 0 0 14px;
-  color: #43545e;
+  color: #456673;
   font-size: 1.05rem;
 }
 
@@ -68,16 +68,16 @@ const appTitle = inject('appTitle', 'Weather Dashboard')
   flex-direction: column;
   gap: 4px;
   padding: 12px;
-  border: 1px solid #e6eaed;
+  border: 1px solid #d8ebe5;
   border-radius: 8px;
-  background: #ffffff;
-  color: #66747c;
+  background: #f7fbfa;
+  color: var(--color-muted);
   font-size: 0.82rem;
   line-height: 1.45;
 }
 
 .service-guide li strong {
-  color: #465861;
+  color: #3f7d70;
   font-size: 0.9rem;
 }
 
