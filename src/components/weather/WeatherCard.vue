@@ -39,7 +39,7 @@ const displayFeelsLike = computed(() =>
           }}{{ configStore.unitSymbol }} | 습도: {{ props.cityItem.humidity }}%
         </p>
 
-        <el-tag v-if="props.cityItem.temp >= 29" type="warning" effect="light"> ☀️ 더움 </el-tag>
+        <el-tag v-if="props.cityItem.temp >= 25" type="warning" effect="light"> ☀️ 더움 </el-tag>
 
         <el-tag v-else type="success" effect="light"> 🍃 선선함 </el-tag>
       </div>

@@ -10,21 +10,32 @@ const appTitle = inject('appTitle', 'Weather Dashboard')
     <h2>ℹ | 서비스 소개</h2>
     <p>
       <strong>{{ appTitle }}</strong
-      >는 Vue 3 학습을 위한 날씨 대시보드입니다.
+      >는 OpenWeather API를 활용해 국내 주요 도시의 현재 날씨를 제공하는 서비스입니다.
     </p>
-    <p>Vue Router를 이용하여 날씨 목록과 지역별 상세 페이지를 연결합니다.</p>
+    <p>도시별 날씨를 검색하고 지도와 상세 화면에서 기상 및 대기질 정보를 확인할 수 있습니다.</p>
 
     <article class="service-guide">
-      <h3>🛎️ 제공하는 서비스</h3>
+      <h3>🛎️ 제공하는 서비스🤵🏻‍♂️</h3>
       <ul>
-        <li><strong>도시 검색</strong><span>도시 이름으로 원하는 지역을 빠르게 찾습니다.</span></li>
         <li>
-          <strong>조건별 필터</strong><span>체감온도와 습도를 기준으로 날씨를 확인합니다.</span>
+          <strong>🔎 도시 검색</strong><span>도시 이름으로 원하는 지역을 빠르게 찾습니다.</span>
         </li>
-        <li><strong>단위 변경</strong><span>기온을 섭씨 또는 화씨로 전환합니다.</span></li>
         <li>
-          <strong>상세 날씨</strong><span>습도, 풍속, 미세먼지 등 상세 정보를 제공합니다.</span>
+          <strong>🗺️ 전국 날씨 지도</strong
+          ><span>지도에서 국내 10개 도시의 위치와 현재 기온을 한눈에 확인합니다.</span>
         </li>
+        <li>
+          <strong>🐠 상세 날씨</strong
+          ><span>기온, 체감온도, 습도, 풍속 등 상세 기상 정보를 제공합니다.</span>
+        </li>
+        <li>
+          <strong>☁️ 대기질 정보</strong
+          ><span>도시별 대기질과 미세먼지(PM10), 초미세먼지(PM2.5)를 확인합니다.</span>
+        </li>
+        <li>
+          <strong>🗂️ 조건별 필터</strong><span>체감온도와 습도를 기준으로 날씨를 확인합니다.</span>
+        </li>
+        <li><strong>📏 단위 변경</strong><span>기온을 섭씨 또는 화씨로 전환합니다.</span></li>
       </ul>
     </article>
 
@@ -56,7 +67,7 @@ const appTitle = inject('appTitle', 'Weather Dashboard')
 
 .service-guide ul {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin: 0;
   padding: 0;
