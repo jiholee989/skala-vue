@@ -11,7 +11,7 @@
 <style scoped>
 .dashboard-card {
   margin-bottom: 16px;
-  padding: 20px;
+  padding: 20px 32px;
   border: 1px solid #dcdfe6;
   border-radius: 10px;
   background: #ffffff;
@@ -19,5 +19,11 @@
 
 .dashboard-card__title {
   margin-bottom: 12px;
+}
+
+@media (max-width: 560px) {
+  .dashboard-card {
+    padding: 20px;
+  }
 }
 </style>

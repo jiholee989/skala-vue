@@ -1,4 +1,8 @@
 <script setup>
+import { computed } from 'vue'
+import { useConfigStore } from '@/stores/configStore'
+import { toDisplayTemperature } from '@/utils/temperature'
+
 const props = defineProps({
   cityItem: {
     type: Object,
@@ -7,6 +11,14 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['select-card', 'click-detail'])
+
+const configStore = useConfigStore()
+const displayTemp = computed(() =>
+  toDisplayTemperature(props.cityItem.temp, configStore.unit),
+)
+const displayFeelsLike = computed(() =>
+  toDisplayTemperature(props.cityItem.feelsLike, configStore.unit),
+)
 </script>
 
 <template>
@@ -14,15 +26,28 @@ const emit = defineEmits(['select-card', 'click-detail'])
     class="weather-card"
     @click="emit('select-card', `${props.cityItem.name}이 선택되었습니다.`)"
   >
-    <h3>{{ props.cityItem.name }} ({{ props.cityItem.status }})</h3>
-    <p>
-      현재 기온: {{ props.cityItem.temp }}℃ | 체감 온도: {{ props.cityItem.feelsLike }}℃ | 습도:
-      {{ props.cityItem.humidity }}%
-    </p>
+    <div class="weather-card__body">
+      <img
+        v-if="props.cityItem.icon"
+        class="weather-card__icon"
+        :src="`https://openweathermap.org/img/wn/${props.cityItem.icon}@2x.png`"
+        :alt="`${props.cityItem.status} 날씨 아이콘`"
+      />
 
-    <span v-if="props.cityItem.temp >= 25" class="temperature-label hot">☀️ 더움(25도 이상)</span>
-    <!--조건부 렌더링 (v-if)-->
-    <span v-else class="temperature-label cool">🍃 선선함(25도 미만)</span>
+      <div class="weather-card__content">
+        <h3>{{ props.cityItem.name }} ({{ props.cityItem.status }})</h3>
+        <p>
+          현재 기온: {{ displayTemp }}{{ configStore.unitSymbol }} | 체감 온도:
+          {{ displayFeelsLike }}{{ configStore.unitSymbol }} | 습도: {{ props.cityItem.humidity }}%
+        </p>
+
+        <span v-if="props.cityItem.temp >= 25" class="temperature-label hot">
+          ☀️ 더움(25도 이상)
+        </span>
+        <!--조건부 렌더링 (v-if)-->
+        <span v-else class="temperature-label cool">🍃 선선함(25도 미만)</span>
+      </div>
+    </div>
 
     <button @click.stop="emit('click-detail', props.cityItem.id)">상세보기</button>
     <!--.stop으로 버블링 방지-->
@@ -49,8 +74,25 @@ const emit = defineEmits(['select-card', 'click-detail'])
 }
 
 .weather-card h3 {
-  margin-top: 0;
+  margin: 0;
   color: #294e66;
+}
+
+.weather-card__body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.weather-card__icon {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.weather-card__content {
+  min-width: 0;
 }
 
 .weather-card p {
@@ -111,6 +153,15 @@ const emit = defineEmits(['select-card', 'click-detail'])
     display: block;
     margin: 14px 0 0 auto;
     transform: none;
+  }
+
+  .weather-card__body {
+    align-items: flex-start;
+  }
+
+  .weather-card__icon {
+    width: 58px;
+    height: 58px;
   }
 }
 </style>

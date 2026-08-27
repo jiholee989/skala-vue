@@ -1,7 +1,9 @@
 <script setup>
 import { provide } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+import UnitToggler from '@/components/weather/UnitToggler.vue'
 
+const route = useRoute()
 provide('appTitle', 'Vue Weather Dashboard')
 </script>
 
@@ -13,6 +15,8 @@ provide('appTitle', 'Vue Weather Dashboard')
       <nav class="main-nav">
         <RouterLink class="nav-link" to="/">🌤️ 날씨 대시보드</RouterLink>
         <RouterLink class="nav-link" to="/about">ℹ️ 서비스 소개</RouterLink>
+
+        <UnitToggler v-if="['WeatherHome', 'WeatherDetail'].includes(route.name)" />
       </nav>
     </header>
 
@@ -35,7 +39,7 @@ provide('appTitle', 'Vue Weather Dashboard')
 }
 
 .nav-link {
-  flex: 1;
+  /* flex: 1; */
   padding: 10px 14px;
   border-radius: 8px;
   color: #315f7d;

@@ -15,7 +15,7 @@ body {
   margin: 36px auto;
 }
 
-.app-container > h1 {
+.app-header > h1 {
   margin-bottom: 24px;
   color: #1f4f6f;
   font-size: clamp(1.7rem, 4vw, 2.3rem);

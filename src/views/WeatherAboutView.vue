@@ -7,18 +7,93 @@ const appTitle = inject('appTitle', 'Weather Dashboard')
 
 <template>
   <section class="about-view">
-    <h2>서비스 소개</h2>
-    <p><strong>{{ appTitle }}</strong>는 Vue 3 학습을 위한 날씨 대시보드입니다.</p>
+    <h2>ℹ | 서비스 소개</h2>
+    <p>
+      <strong>{{ appTitle }}</strong
+      >는 Vue 3 학습을 위한 날씨 대시보드입니다.
+    </p>
     <p>Vue Router를 이용하여 날씨 목록과 지역별 상세 페이지를 연결합니다.</p>
-    <RouterLink to="/">메인 대시보드로 돌아가기</RouterLink>
+
+    <article class="service-guide">
+      <h3>🛎️ 제공하는 서비스</h3>
+      <ul>
+        <li><strong>도시 검색</strong><span>도시 이름으로 원하는 지역을 빠르게 찾습니다.</span></li>
+        <li>
+          <strong>조건별 필터</strong><span>체감온도와 습도를 기준으로 날씨를 확인합니다.</span>
+        </li>
+        <li><strong>단위 변경</strong><span>기온을 섭씨 또는 화씨로 전환합니다.</span></li>
+        <li>
+          <strong>상세 날씨</strong><span>습도, 풍속, 미세먼지 등 상세 정보를 제공합니다.</span>
+        </li>
+      </ul>
+    </article>
+
+    <p>↻ <RouterLink to="/">메인 대시보드로 돌아가기</RouterLink></p>
   </section>
 </template>
 
 <style scoped>
 .about-view {
-  padding: 20px;
+  padding: 28px 36px;
   border: 1px solid #dcdfe6;
   border-radius: 10px;
   background: #ffffff;
+}
+
+.service-guide {
+  margin: 22px 0;
+  padding: 18px;
+  border: 1px solid #e1e6ea;
+  border-radius: 10px;
+  background: #fafbfc;
+}
+
+.service-guide h3 {
+  margin: 0 0 14px;
+  color: #43545e;
+  font-size: 1.05rem;
+}
+
+.service-guide ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-guide li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid #e6eaed;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #66747c;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.service-guide li strong {
+  color: #465861;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 840px) {
+  .service-guide ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .about-view {
+    padding: 22px 20px;
+  }
+
+  .service-guide ul {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

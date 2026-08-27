@@ -11,11 +11,11 @@ WeatherParent.vue        ← 부모
 import { computed, ref, watch, watchEffect } from 'vue'
 
 //자식 component import 추가
-import BaseDashboardCard from '../exercise/BaseDashboardCard.vue/index.js'
-import SearchBar from '../exercise/SearchBar.vue'
-import WeatherCard from '../exercise/WeatherCard.vue'
+import BaseDashboardCard from '../weather/BaseDashboardCard.vue/index.js'
+import SearchBar from '../weather/SearchBar.vue'
+import WeatherCard from '../weather/WeatherCard.vue'
 //추가 필터링 기능
-import SearchFilter from '../exercise/SearchFilter.vue'
+import SearchFilter from '../weather/SearchFilter.vue'
 
 // 가상 날씨 데이터
 // prettier-ignore
